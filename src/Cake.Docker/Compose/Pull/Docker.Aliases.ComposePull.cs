@@ -4,10 +4,7 @@ using System;
 
 namespace Cake.Docker
 {
-    /// <summary>
-    /// Contains functionality for working with docker-compose pull command.
-    /// </summary>
-    [CakeAliasCategory("Docker")]
+    // Contains functionality for working with docker-compose pull command.
     partial class DockerAliases
     {
         /// <summary>
@@ -34,7 +31,7 @@ namespace Cake.Docker
             {
                 throw new ArgumentNullException("context");
             }
-            var runner = new GenericDockerComposeRunner<DockerComposePullSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Globber);
+            var runner = new GenericDockerComposeRunner<DockerComposePullSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             runner.Run("pull", settings ?? new DockerComposePullSettings(), services);
         }
 

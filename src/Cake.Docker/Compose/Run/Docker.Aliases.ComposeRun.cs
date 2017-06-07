@@ -5,10 +5,7 @@ using System.Collections.Generic;
 
 namespace Cake.Docker
 {
-    /// <summary>
-    /// Contains functionality for working with docker-compose run command.
-    /// </summary>
-    [CakeAliasCategory("Docker")]
+    // Contains functionality for working with docker-compose run command.
     partial class DockerAliases
     {
         /// <summary>
@@ -67,7 +64,7 @@ namespace Cake.Docker
             {
                 throw new ArgumentNullException(nameof(service));
             }
-            var runner = new GenericDockerComposeRunner<DockerComposeRunSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Globber);
+            var runner = new GenericDockerComposeRunner<DockerComposeRunSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             List<string> arguments = new List<string>();
             arguments.Add(service);
             if (command != null)

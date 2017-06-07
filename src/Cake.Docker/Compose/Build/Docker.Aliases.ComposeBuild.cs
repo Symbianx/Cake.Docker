@@ -4,10 +4,7 @@ using System;
 
 namespace Cake.Docker
 {
-    /// <summary>
-    /// Contains functionality for working with docker-compose build command.
-    /// </summary>
-    [CakeAliasCategory("Docker")]
+    // Contains functionality for working with docker-compose build command.
     partial class DockerAliases
     {
         /// <summary>
@@ -34,7 +31,7 @@ namespace Cake.Docker
             {
                 throw new ArgumentNullException("context");
             }
-            var runner = new GenericDockerComposeRunner<DockerComposeBuildSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Globber);
+            var runner = new GenericDockerComposeRunner<DockerComposeBuildSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             runner.Run("build", settings ?? new DockerComposeBuildSettings(), services);
         }
 

@@ -6,10 +6,7 @@ using System.Linq;
 
 namespace Cake.Docker
 {
-    /// <summary>
-    /// Contains functionality for working with network remove command.
-    /// </summary>
-    [CakeAliasCategory("Docker")]
+    // Contains functionality for working with network remove command.
     partial class DockerAliases
     {
         /// <summary>
@@ -30,7 +27,6 @@ namespace Cake.Docker
         /// <param name="network">The network.</param>
         /// <param name="args">The arguments.</param>
         [CakeMethodAlias]
-        [CakeAliasCategory("Docker")]
         public static void DockerNetworkRemove(this ICakeContext context, string[] network, params string[] args)
         {
             if (context == null)
@@ -41,7 +37,7 @@ namespace Cake.Docker
             {
                 throw new ArgumentNullException("network");
             }
-            var runner = new GenericDockerRunner<EmptySettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Globber);
+            var runner = new GenericDockerRunner<EmptySettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             List<string> arguments = new List<string> (network);
             if (args.Length > 0)
             {

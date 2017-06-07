@@ -6,10 +6,7 @@ using System.Linq;
 
 namespace Cake.Docker
 {
-    /// <summary>
-    /// Contains functionality for working with ps command.
-    /// </summary>
-    [CakeAliasCategory("Docker")]
+    // Contains functionality for working with ps command.
     partial class DockerAliases
     {
         /// <summary>
@@ -35,7 +32,7 @@ namespace Cake.Docker
             {
                 throw new ArgumentNullException("context");
             }
-            var runner = new GenericDockerRunner<DockerPsSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Globber);
+            var runner = new GenericDockerRunner<DockerPsSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             return runner.RunWithResult("ps", settings ?? new DockerPsSettings(), Processor);
         }
 

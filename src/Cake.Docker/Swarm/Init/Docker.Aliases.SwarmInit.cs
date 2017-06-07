@@ -5,10 +5,7 @@ using System.Collections.Generic;
 
 namespace Cake.Docker
 {
-    /// <summary>
-    /// Contains functionality for working with swarm init command.
-    /// </summary>
-    [CakeAliasCategory("Docker")]
+    // Contains functionality for working with swarm init command.
     partial class DockerAliases
     {
 
@@ -36,7 +33,7 @@ namespace Cake.Docker
             {
                 throw new ArgumentNullException("context");
             }
-            var runner = new GenericDockerRunner<DockerSwarmInitSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Globber);
+            var runner = new GenericDockerRunner<DockerSwarmInitSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             List<string> arguments = new List<string> ();
             if (args.Length > 0)
             {

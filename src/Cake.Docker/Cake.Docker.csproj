@@ -31,8 +31,8 @@
     <DocumentationFile>bin\Release\Cake.Docker.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cake.Core, Version=0.10.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cake.Core.0.10.1\lib\net45\Cake.Core.dll</HintPath>
+    <Reference Include="Cake.Core">
+      <HintPath>..\packages\Cake.Core.0.17.0\lib\net45\Cake.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -108,6 +108,8 @@
     <Compile Include="Push\DockerPullSettings.cs" />
     <Compile Include="Load\Docker.Aliases.Load.cs" />
     <Compile Include="Load\DockerLoadSettings.cs" />
+    <Compile Include="Run\Docker.Aliases.Run.cs" />
+    <Compile Include="Run\DockerRunSettings.cs" />
     <Compile Include="Save\Docker.Aliases.Save.cs" />
     <Compile Include="Save\DockerSaveSettings.cs" />
     <Compile Include="Stop\Docker.Aliases.Stop.cs" />
@@ -130,7 +132,6 @@
   <ItemGroup>
     <Compile Include="Rm\Docker.Aliases.Rm.cs" />
     <Content Include="Compose\args.txt" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Build\args.txt" />
@@ -152,13 +153,16 @@
     <Content Include="Ps\args.txt" />
     <Content Include="Pull\args.txt" />
     <Content Include="Push\args.txt" />
+    <Content Include="Run\args.txt" />
     <Content Include="Swarm\Init\args.txt" />
     <Content Include="Swarm\Update\args.txt" />
     <Content Include="Swarm\Leave\args.txt" />
     <Content Include="Swarm\Join\args.txt" />
     <Content Include="Tag\args.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

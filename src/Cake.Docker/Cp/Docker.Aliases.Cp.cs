@@ -4,10 +4,7 @@ using System;
 
 namespace Cake.Docker
 {
-    /// <summary>
-    /// Contains functionality for working with cp command.
-    /// </summary>
-    [CakeAliasCategory("Docker")]
+    // Contains functionality for working with cp command.
     partial class DockerAliases
     {
         /// <summary>
@@ -43,7 +40,7 @@ namespace Cake.Docker
             {
                 throw new ArgumentNullException("to");
             }
-            var runner = new GenericDockerRunner<DockerCpSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Globber);
+            var runner = new GenericDockerRunner<DockerCpSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             runner.Run("cp", settings ?? new DockerCpSettings(), new string[] { from, to });
         }
 

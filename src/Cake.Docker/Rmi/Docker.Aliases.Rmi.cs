@@ -4,10 +4,7 @@ using System;
 
 namespace Cake.Docker
 {
-    /// <summary>
-    /// Contains functionality for working with rmi command.
-    /// </summary>
-    [CakeAliasCategory("Docker")]
+    // Contains functionality for working with rmi command.
     partial class DockerAliases
     {
         /// <summary>
@@ -38,7 +35,7 @@ namespace Cake.Docker
             {
                 throw new ArgumentNullException("containers");
             }
-            var runner = new GenericDockerRunner<DockerRmiSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Globber);
+            var runner = new GenericDockerRunner<DockerRmiSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             runner.Run("rmi", settings ?? new DockerRmiSettings(), images);
         }
     }
