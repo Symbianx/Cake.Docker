@@ -4,10 +4,7 @@ using System;
 
 namespace Cake.Docker
 {
-    /// <summary>
-    /// Contains functionality for working with save command.
-    /// </summary>
-    [CakeAliasCategory("Docker")]
+    // Contains functionality for working with save command.
     partial class DockerAliases
     {
         /// <summary>
@@ -27,7 +24,7 @@ namespace Cake.Docker
             {
                 throw new ArgumentNullException("images");
             }
-            var runner = new GenericDockerRunner<DockerSaveSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Globber);
+            var runner = new GenericDockerRunner<DockerSaveSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             runner.Run("save", settings ?? new DockerSaveSettings(), images);
         }
     }

@@ -4,10 +4,7 @@ using System;
 
 namespace Cake.Docker
 {
-    /// <summary>
-    /// Contains functionality for working with tag command.
-    /// </summary>
-    [CakeAliasCategory("Docker")]
+    // Contains functionality for working with tag command.
     partial class DockerAliases
     {
         /// <summary>
@@ -32,7 +29,7 @@ namespace Cake.Docker
                 throw new ArgumentNullException("registryReference");
             }
 
-            var runner = new GenericDockerRunner<DockerTagSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Globber);
+            var runner = new GenericDockerRunner<DockerTagSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             runner.Run("tag", new DockerTagSettings(), new[] { imageReference, registryReference });
         }
     }

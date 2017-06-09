@@ -4,10 +4,7 @@ using System;
 
 namespace Cake.Docker
 {
-    /// <summary>
-    /// Contains functionality for working with load command.
-    /// </summary>
-    [CakeAliasCategory("Docker")]
+    // Contains functionality for working with load command.
     partial class DockerAliases
     {
         /// <summary>
@@ -22,7 +19,7 @@ namespace Cake.Docker
             {
                 throw new ArgumentNullException("context");
             }
-            var runner = new GenericDockerRunner<DockerLoadSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Globber);
+            var runner = new GenericDockerRunner<DockerLoadSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             runner.Run("load", settings ?? new DockerLoadSettings(), new string[0]);
         }
     }

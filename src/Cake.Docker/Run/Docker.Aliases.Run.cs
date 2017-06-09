@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Cake.Docker
 {
-    // Contains functionality for working with create command.
+    // Contains functionality for working with run command.
     partial class DockerAliases
     {
 
@@ -17,9 +17,9 @@ namespace Cake.Docker
         /// <param name="args">The arguments.</param>
         /// <param name="command">The command.</param>
         [CakeMethodAlias]
-        public static void DockerCreate(this ICakeContext context, string image, string command, params string[] args)
+        public static void DockerRun(this ICakeContext context, string image, string command, params string[] args)
         {
-            DockerCreate(context, new DockerCreateSettings(), image, command, args);
+            DockerRun(context, new DockerRunSettings(), image, command, args);
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace Cake.Docker
         /// <param name="args">The arguments.</param>
         /// <param name="command">The command.</param>
         [CakeMethodAlias]
-        public static void DockerCreate(this ICakeContext context, DockerCreateSettings settings, string image, string command, params string[] args)
+        public static void DockerRun(this ICakeContext context, DockerRunSettings settings, string image, string command, params string[] args)
         {
             if (context == null)
             {
@@ -41,7 +41,7 @@ namespace Cake.Docker
             {
                 throw new ArgumentNullException("image");
             }
-            var runner = new GenericDockerRunner<DockerCreateSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
+            var runner = new GenericDockerRunner<DockerRunSettings>(context.FileSystem, context.Environment, context.ProcessRunner, context.Tools);
             List<string> arguments = new List<string> { image };
             if (!string.IsNullOrEmpty(command))
             {
@@ -51,7 +51,7 @@ namespace Cake.Docker
                     arguments.AddRange(args);
                 }
             }
-            runner.Run("create", settings ?? new DockerCreateSettings(), arguments.ToArray());
+            runner.Run("run", settings ?? new DockerRunSettings(), arguments.ToArray());
         }
 
     }
